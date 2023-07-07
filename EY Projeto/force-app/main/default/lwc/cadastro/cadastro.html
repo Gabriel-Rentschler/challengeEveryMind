@@ -1,0 +1,92 @@
+<template>
+    <div>
+        <div class="container">
+            <img src="https://www.seekpng.com/png/full/785-7858737_about-ey-ey-logo.png" alt="Logo da EY" class="ey-logo">
+        </div>
+
+        <div class="Cadastro">
+            <h2>O começo de sua nova jornada</h2>
+            <h2>Faça agora sua inscrição.</h2>
+            <h4>É rápido e facil</h4>
+
+            <div class="cadastro-form">
+                <div class="form-field">
+                    <label for="full-name">Nome completo*</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email">
+                </div>
+                <div class="form-field">
+                    <label for="birthdate">Data de nascimento*</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="form-field inline-fields">
+                    <label for="ddd">DDD*</label>
+                    <input type="text" id="ddd" name="ddd" placeholder="DDD" required>
+                </div>
+                <div class="form-field inline-fields">
+                    <label for="cellphone">Celular*</label>
+                    <input type="text" id="cellphone" name="cellphone" placeholder="Digite seu numero de celular" required>
+                </div>
+                <div class="form-field">
+                    <label for="race">Você se considera uma pessoa:</label>
+                    <select id="race" name="race" required>
+                    <option value="">Selecione</option>
+                    <option value="branca">Branca</option>
+                    <option value="preta">Preta</option>
+                    <option value="parda">Parda</option>
+                    <option value="amarela">Amarela</option>
+                    <option value="raça/etnia indigena">Raça/etnia indígena</option>
+                    <option value="prefiro não responder">Prefiro não responder</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="lgbtq">Você faz parte da comunidade LGBTQIAP+?*</label>
+                    <select id="lgbtq" name="lgbtq" required>
+                    <option value="">Selecione</option>
+                    <option value="sim">Sim</option>
+                    <option value="não">Não</option>
+                    <option value="prefiro não responder">Prefiro não responder</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="disability">Você possui alguma deficiência?*</label>
+                    <select id="disability" name="disability" required>
+                    <option value="">Selecione</option>
+                    <option value="sim">Sim</option>
+                    <option value="não">Não</option>
+                    <option value="prefiro não responder">Prefiro não responder</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="disability-details">Se sim, poderia nos contar mais?</label>
+                    <textarea id="disability-details" name="disability-details"></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="family-income">Contando com você, qual a renda familiar de sua residência?*</label>
+                    <select id="family-income" name="family-income" required>
+                    <option value="">Selecione</option>
+                    <option value="10 a 20 salarios minimos">De 10 a 20 salários mínimos</option>
+                    <option value="4 a 10 salarios minimos">De 4 a 10salários mínimos</option>
+                    <option value="2 a 4 salarios minimos">De 2 a 4 salários mínimos</option>
+                    <option value="recebe ate 2 salarios minimos">Recebe até 2 salários mínimos</option>
+                    <option value="prefiro não responder">Prefiro não responder</option>
+                    </select>
+                </div>
+
+                <button type="submit">Cadastrar</button>
+            </div>
+            <!-- Outros campos de cadastro aqui -->
+            <div class="form-field">
+                
+            </div>
+
+            <h4>Já possui cadastro? Faça login</h4>
+        </div>   
+    </div>
+    <div class="footer">
+      <p class="footer-text">2023 EY. All rights reserved.</p>
+    </div>
+</template>
