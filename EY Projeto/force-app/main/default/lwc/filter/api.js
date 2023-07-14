@@ -5,12 +5,12 @@ inputQuestion.addEventListener("keypress", (e) => {
   if (inputQuestion.value && e.key === "Enter") SendQuestion();
 });
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
 
 function SendQuestion() {
   var sQuestion = inputQuestion.value;
 
-  fetch("https://api.openai.com/v1/completions", {
+  fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -18,20 +18,20 @@ function SendQuestion() {
       Authorization: "Bearer " + OPENAI_API_KEY,
     },
     body: JSON.stringify({
-      model: "text-davinci-003",
-      prompt: sQuestion,
-      max_tokens: 2048, // tamanho da resposta
-      temperature: 0.5, // criatividade na resposta
+      model: "gpt-3.5-turbo",
+      max_tokens: 100, // tamanho da resposta
+      temperature: 0.5,
+      messages: [{"role": "user", "content": sQuestion}] // criatividade na resposta
     }),
   })
     .then((response) => response.json())
     .then((json) => {
       if (result.value) result.value += "\n";
-
+      console.log(json.choices[0].message.content)
       if (json.error?.message) {
         result.value += `Error: ${json.error.message}`;
-      } else if (json.choices?.[0].text) {
-        var text = json.choices[0].text || "Sem resposta";
+      } else if (json.choices?.[0].message) {
+        var text = json.choices[0].message.content || "Sem resposta";
 
         result.value += "Chat GPT: " + text;
       }
