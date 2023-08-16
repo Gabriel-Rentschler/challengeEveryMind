@@ -1,0 +1,5 @@
+.fixed-notification {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}

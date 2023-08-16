@@ -1,11 +1,11 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "force-app/main/default",
       "default": true
     }
   ],
-  "name": "EY Projeto",
+  "name": "Projeto EY",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "57.0"

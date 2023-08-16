@@ -1,7 +1,9 @@
 import { LightningElement, track } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class Cadastro extends LightningElement {
+export default class Cadastro extends NavigationMixin(LightningElement)  {
   @track showRequiredMessage = false;
+  @track showSuccessMessage = false;
   @track showFullNameRequiredMessage = false;
   @track showEmailRequiredMessage = false;
   @track showBirthdateRequiredMessage = false;
@@ -79,8 +81,25 @@ export default class Cadastro extends LightningElement {
       this.showRequiredMessage = true;
     }
 
+
     if (!this.showRequiredMessage) {
-      // Restante da lógica de cadastro
-    }
-  }
+      // Mostra a mensagem de sucesso
+      this.showSuccessMessage = true;
+
+       // Define um timeout para ocultar a mensagem após 5 segundos
+       setTimeout(() => {
+        this.showSuccessMessage = false;
+      
+      const url = '/eyprojeto/ey-login'; // Substitua pela URL correta
+
+      // Navegue para a nova URL
+      this[NavigationMixin.Navigate]({
+          type: 'standard__webPage',
+          attributes: {
+              url: url
+          }
+      });
+  }, 4000);
+}
+}
 }

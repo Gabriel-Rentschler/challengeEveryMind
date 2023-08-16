@@ -1,0 +1,143 @@
+.container{
+    display: flex;
+    background-color: #2c2c3c;
+    justify-content: left;
+    height: 50px;
+}
+
+.ey-logo {
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+  
+
+  .center {
+    justify-content: center;
+    text-align: center;
+    background: whitesmoke;
+    padding: 80px;
+  } 
+
+  h1 {
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  input {
+    margin-top: 40px;
+    width: 700px;
+    border-radius: 10px;
+    height: 20px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .botoes {
+    margin: 20px;
+    padding: 40px;
+  }
+
+  button {
+    margin-right: 20px;
+    display: inline-block;
+    color: white;
+    background-color: #f7e111;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 40px;
+    font-weight: 700;
+  }
+
+
+  
+  .form-field {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+
+
+  .footer {
+    background-color: #34495e;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .footer-text {
+    font-weight: bold;
+    color: white;
+  }
+  .candidato-container {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribui os elementos igualmente na linha */
+    align-items: flex-start; /* Alinha os elementos no topo da linha */
+    
+  }
+
+  .candidato-1,
+  .candidato-2,
+  .candidato-3,
+  .candidato-4 {
+    width: calc(50% - 10px); /* Define a largura de cada candidato para ocupar metade da largura da linha, considerando alguma margem */
+    margin-bottom: 20px; /* Adicione uma margem inferior para espaçamento entre os candidatos */
+    padding: 20px;
+  }
+
+
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    /* Adicione a imagem de fundo aqui */
+  }
+  
+  h3 {
+    font-weight: bold;
+    padding: 10px;
+    color: #2c2c3c;;
+  }
+
+  p {
+    padding: 10px;
+  }
+
+  li {
+    padding: 10px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .profile-section p {
+    margin-top: 0;
+  }
+  
+  .skills-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .experience-section h4 {
+    margin: 10px 0;
+  }
+  
+  .contact-section p {
+    margin: 0;
+  }
+
+  .box {
+    padding: 20px;
+    margin: 10px;
+    margin-bottom: -10px;
+  }
