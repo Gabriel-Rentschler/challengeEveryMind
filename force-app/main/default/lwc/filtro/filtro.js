@@ -19,10 +19,17 @@ export default class Filtro extends LightningElement {
     }
 
     sendQuestion() {
-        var searchInput = this.template.querySelector('input[name="search"]').value;
-        console.log(searchInput);
+        var searchInput = "Analise os currículos e responda apenas com o nome do(s) candidato(s) mais adequado(s):"
+        searchInput += this.curriculums();
+        searchInput += this.template.querySelector('input[name="search"]').value;
         const OPENAI_API_KEY = "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";
 
+        const candidatos = {};
+        candidatos["matheus"] = this.template.querySelector('div[class="matheus"]');
+        candidatos["cahue"] = this.template.querySelector('div[class="cahue"]');
+        candidatos["gabriel"] = this.template.querySelector('div[class="gabriel"]');
+        candidatos["gustavo"] = this.template.querySelector('div[class="gustavo"]');
+        
         fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -43,14 +50,27 @@ export default class Filtro extends LightningElement {
                 console.log(`Error: ${json.error.message}`);
             } else if (json.choices?.[0].message) {
                 var text = json.choices[0].message.content || "Sem resposta";
-
+                const responseSplit = text.split("Currículo ");
                 console.log(text);
+                console.log(responseSplit[1]);
+                
+                for (var key in candidatos) {
+                    if (key == responseSplit[1].toLowerCase())
+                        candidatos[key].style.display = 'none';
+                }
+
             }
         })
         .catch((error) => console.error("Error:", error))
         .finally(() => {
             console.log('finally')
         });
+        
+    }
 
+    curriculums() {
+        var curriculums = "Currículo Matheus:  \n Desenvolvedor de Aplicações \n Experiência como Desenvolvedor e Quality Assurance, atuando em projetos para empresas na área de telecomunicações e petrolífera. Aprimorando minhas habilidades para atender as necessidades do cliente e auxiliar a equipe, utilizando metodologias ágeis. Com sólida experiência internacional e Inglês fluente. Especialidade em Salesforce, Java e Cloud. \n";
+        curriculums += "Currículo Cahue: \n Desenvolvedor de Aplicações \n Minha exposição internacional em uma idade jovem me deu uma profunda experiência cobrindo vários aspectos da vida profissional, como atendimento ao cliente, vendas e estratégia. \n De volta ao Brasil desde 2019, iniciei meus estudos e carreira na Tecnologia da Informação. Atualmente atuando como iOS Developer Trainee, utilizando a linguagem de programação Swift (Storyboard, UIKit, Auto Layout, ViewCode e MVC Design Pattern) e a IDE XCode. \n";
+        return curriculums;
     }
 }
