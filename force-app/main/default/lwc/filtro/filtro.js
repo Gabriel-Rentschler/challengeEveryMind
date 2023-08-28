@@ -31,14 +31,14 @@ export default class Filtro extends LightningElement {
         const OPENAI_API_KEY = "";
 
         const candidatos = {};
-        candidatos["matheus"] = this.template.querySelector('div[class="matheus"]');
-        candidatos["cahue"] = this.template.querySelector('div[class="cahue"]');
-        candidatos["gabriel"] = this.template.querySelector('div[class="gabriel"]');
-        candidatos["gustavo"] = this.template.querySelector('div[class="gustavo"]');
-        candidatos["vinicius"] = this.template.querySelector('div[class="vinicius"]');
-        //candidatos["sofia"] = this.template.querySelector('div[class="sofia"]');
-        //candidatos["ricardo"] = this.template.querySelector('div[class="ricardo"]');
-        //candidatos["laura"] = this.template.querySelector('div[class="laura"]');
+        candidatos["matheus"] = this.template.querySelector('div[class="candidato-1"]');
+        candidatos["cahue"] = this.template.querySelector('div[class="candidato-2"]');
+        candidatos["gabriel"] = this.template.querySelector('div[class="candidato-3"]');
+        candidatos["gustavo"] = this.template.querySelector('div[class="candidato-4"]');
+        candidatos["vinicius"] = this.template.querySelector('div[class="candidato-5"]');
+        candidatos["sofia"] = this.template.querySelector('div[class="candidato-6"]');
+        candidatos["ricardo"] = this.template.querySelector('div[class="candidato-7"]');
+        candidatos["laura"] = this.template.querySelector('div[class="candidato-8"]');
         
         fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
@@ -62,11 +62,17 @@ export default class Filtro extends LightningElement {
                 var text = json.choices[0].message.content || "Sem resposta";
                 const responseSplit = text.replaceAll(" e ", ', ').replace(".", "").split(", ");
                 console.log(text);
+                console.log(responseSplit[0]);
                 console.log(responseSplit[1]);
                 
                 for (var key in candidatos) {
-                    if (key != responseSplit[1].toLowerCase())
-                        candidatos[key].style.display = 'none';
+                    candidatos[key].style.display = 'none';
+                    for (var resp in responseSplit) {
+                        if (key == responseSplit[resp].toLowerCase()) {
+                            candidatos[key].style.display = 'inline';
+                            break;
+                        }
+                    }
                 }
 
             }
