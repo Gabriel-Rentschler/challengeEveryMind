@@ -1,11 +1,15 @@
 import { LightningElement } from 'lwc';
-import EYassets from '@salesforce/resourceUrl/EYassets';
+import EYassetsp from '@salesforce/resourceUrl/EYassetsp';
 
 export default class Filtro extends LightningElement {
-    candidato1 = `${EYassets}/EYassets/matheusLogo.png`;
-    candidato2 = `${EYassets}/EYassets/Cahue.jpg`;
-    candidato3 = `${EYassets}/EYassets/Gabriel.jpg`;
-    candidato4 = `${EYassets}/EYassets/Gustavo.jpg`;
+    candidato1 = `${EYassetsp}/EYassets/matheusLogo.png`;
+    candidato2 = `${EYassetsp}/EYassets/Cahue.jpg`;
+    candidato3 = `${EYassetsp}/EYassets/Gabriel.jpg`;
+    candidato4 = `${EYassetsp}/EYassets/Gustavo.jpg`;
+    candidato5 = `${EYassetsp}/EYassets/Vinicius.jpg`;
+    candidato6 = `${EYassetsp}/EYassets/Sofia.jpg`;
+    candidato7 = `${EYassetsp}/EYassets/Ricardo.jpg`;
+    candidato8 = `${EYassetsp}/EYassets/Laura.jpg`;
     searchText = '';
 
     handleSearchKeyUp(event) {
@@ -23,13 +27,17 @@ export default class Filtro extends LightningElement {
         searchInput += this.curriculums();
         searchInput += this.template.querySelector('input[name="search"]').value;
 
-        const OPENAI_API_KEY = "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";
+        const OPENAI_API_KEY = "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";
 
         const candidatos = {};
         candidatos["matheus"] = this.template.querySelector('div[class="matheus"]');
         candidatos["cahue"] = this.template.querySelector('div[class="cahue"]');
         candidatos["gabriel"] = this.template.querySelector('div[class="gabriel"]');
         candidatos["gustavo"] = this.template.querySelector('div[class="gustavo"]');
+        candidatos["vinicius"] = this.template.querySelector('div[class="vinicius"]');
+        //candidatos["sofia"] = this.template.querySelector('div[class="sofia"]');
+        //candidatos["ricardo"] = this.template.querySelector('div[class="ricardo"]');
+        //candidatos["laura"] = this.template.querySelector('div[class="laura"]');
         
         fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
@@ -51,12 +59,12 @@ export default class Filtro extends LightningElement {
                 console.log(`Error: ${json.error.message}`);
             } else if (json.choices?.[0].message) {
                 var text = json.choices[0].message.content || "Sem resposta";
-                const responseSplit = text.replaceAll("e ", ',').split(",");
+                const responseSplit = text.replaceAll(" e ", ',').replace(".", "").split(",");
                 console.log(text);
                 console.log(responseSplit[1]);
                 
                 for (var key in candidatos) {
-                    if (key != text.toLowerCase())
+                    if (key != responseSplit[1].toLowerCase())
                         candidatos[key].style.display = 'none';
                 }
 
@@ -64,7 +72,7 @@ export default class Filtro extends LightningElement {
         })
         .catch((error) => console.error("Error:", error))
         .finally(() => {
-            console.log('finally')
+            //console.log('finally')
         });
         
     }
