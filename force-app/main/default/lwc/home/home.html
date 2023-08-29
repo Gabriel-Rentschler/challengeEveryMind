@@ -1,0 +1,17 @@
+<template>
+    <div class="container">
+        <nav class="menu">
+            <input type="checkbox" name="menucircular" id="menucircular" class="menucircular" onchange={handleCheckboxChange}>
+            <label for="menucircular" class="menu-btn">
+                <span class="linha linha-1"></span>
+                <span class="linha linha-2"></span>
+                <span class="linha linha-3"></span>
+            </label>
+            <template for:each={menuItems} for:item="item">
+                <a key={item.id} href={item.link} class="menu-a" style={item.style}>
+                    <img src={item.icon} class="menu-icon">
+                </a>
+            </template>
+        </nav>
+    </div>
+</template>

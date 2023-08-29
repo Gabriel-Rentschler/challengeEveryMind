@@ -1,0 +1,98 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #131313;
+}
+
+.menu-a {
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #131313;
+    border: 2px solid #282828;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(.27, .68, .53, .3);
+}
+
+.menu-a.hidden {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+.menu {
+    width: 70px;
+    height: 70px;
+    position: relative;
+}
+
+.menu-btn {
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border: 2px solid #282828;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #131313;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.2s ease-in-out;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+    box-shadow: inset 1px 1px 2px #f0f, inset 1px -1px 2px #0340d0, inset -1px 1px 2px #efff0c, inset -1px -1px 2px #ff0000;
+}
+
+.menucircular {
+    display: none;
+}
+
+.linha {
+    background-color: #aaa;
+    width: 25px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 0.5s ease-in-out;
+    transform: translate(-50%, -50%);
+    margin-left: -11px;
+}
+
+.linha-1 {
+    transform: translateY(-8px);
+}
+
+.linha-2 {
+    transform: translateY(0);
+}
+
+.linha-3 {
+    transform: translateY(8px);
+}
+
+.menucircular:checked + .menu-btn .linha-1 {
+    transform: translate3d(0, 0, 0) rotate(45deg);
+}
+
+.menucircular:checked + .menu-btn .linha-2 {
+    transform: translate3d(0, 0, 0) scale(0.1, 1.0);
+}
+
+.menucircular:checked + .menu-btn .linha-3 {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
+}
+
+
+.menucircular:checked + .menu-btn {
+    transition: all 0.5s linear;
+    transform: scale(0.9) translate3d(0, 0, 0);
+}
